@@ -332,9 +332,35 @@
     <div class="footer-bottom">© 2026 Make Up By Nedz. All rights reserved.</div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="js/main.js"></script>
   <script>
-    const form = document.getElementById('enquiryForm');
+    // ── EmailJS config ──────────────────────────────────────
+    // Replace these three values after setting up EmailJS:
+    //   1. Go to https://emailjs.com and create a free account
+    //   2. Add an Email Service (Gmail recommended) — copy the Service ID
+    //   3. Create Template 1 "enquiry_notification" (email to Nedz):
+    //        To email: Nedz's email address
+    //        Subject:  New Booking Enquiry — {{occasion}}
+    //        Body:     Name: {{from_name}}, Email: {{from_email}},
+    //                  Phone: {{phone}}, Date: {{preferred_date}},
+    //                  Occasion: {{occasion}}, Message: {{message}}
+    //   4. Create Template 2 "enquiry_confirmation" (email to enquirer):
+    //        To email: {{from_email}}
+    //        Subject:  Your enquiry has been received — Make Up By Nedz
+    //        Body:     Hi {{from_name}}, thank you for reaching out.
+    //                  Your enquiry has been received and Nedz will be
+    //                  in touch shortly. Please note a deposit is required
+    //                  to secure your date and is non-refundable.
+    //   5. Copy your Public Key from Account > API Keys
+    const EMAILJS_PUBLIC_KEY      = 'YOUR_PUBLIC_KEY';
+    const EMAILJS_SERVICE_ID      = 'YOUR_SERVICE_ID';
+    const TEMPLATE_NOTIFICATION   = 'enquiry_notification';   // template ID for Nedz
+    const TEMPLATE_CONFIRMATION   = 'enquiry_confirmation';   // template ID for enquirer
+
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    const form    = document.getElementById('enquiryForm');
     const success = document.getElementById('formSuccess');
 
     form.addEventListener('submit', async (e) => {
@@ -343,37 +369,25 @@
       btn.textContent = 'Sending…';
       btn.disabled = true;
 
-      const data = {
-        access_key: 'fa615d0c-ced3-4792-b9e9-67df6cff9bb1',
-        subject: 'New Booking Enquiry — Make Up By Nedz',
-        from_name: 'Make Up By Nedz Website',
-        replyto: form.querySelector('#email').value,
-        name: form.querySelector('#fullName').value,
-        email: form.querySelector('#email').value,
-        phone: form.querySelector('#phone').value,
-        occasion: form.querySelector('#occasion').value,
+      const params = {
+        from_name:      form.querySelector('#fullName').value,
+        from_email:     form.querySelector('#email').value,
+        phone:          form.querySelector('#phone').value,
+        occasion:       form.querySelector('#occasion').value,
         preferred_date: form.querySelector('#preferredDate').value,
-        message: form.querySelector('#message').value,
-        // Auto-reply to the person who filled the form
-        botcheck: '',
+        message:        form.querySelector('#message').value,
       };
 
       try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        const json = await res.json();
-        if (json.success) {
-          form.style.display = 'none';
-          success.classList.add('show');
-        } else {
-          btn.textContent = 'Send Enquiry';
-          btn.disabled = false;
-          alert('Something went wrong. Please try again or message via Instagram.');
-        }
+        // 1. Notify Nedz
+        await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_NOTIFICATION, params);
+        // 2. Confirm to enquirer
+        await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_CONFIRMATION, params);
+
+        form.style.display = 'none';
+        success.classList.add('show');
       } catch (err) {
+        console.error('EmailJS error:', err);
         btn.textContent = 'Send Enquiry';
         btn.disabled = false;
         alert('Something went wrong. Please try again or message via Instagram.');
