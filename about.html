@@ -9,53 +9,34 @@
   <style>
     body { background: var(--ivory); }
 
-    /* ── Split Layout ──────────────────────────────────── */
-    .about-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(2.5rem, 6vw, 7rem);
-      align-items: center;
-      padding: var(--space-xl) 0;
+    /* ── About Bio ───────────────────────────────────────── */
+    .about-bio {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: var(--space-lg) var(--space-md);
+      text-align: center;
     }
-    .about-img {
-      aspect-ratio: 3/4;
-      overflow: hidden;
-      position: relative;
-    }
-    .about-img img {
-      height: 100%;
-      object-position: center 15%;
-    }
-    .about-img-caption {
-      position: absolute;
-      bottom: 1.4rem;
-      left: 1.4rem;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(245,239,230,0.55);
-      font-weight: 400;
-    }
-    .about-text .eyebrow { margin-bottom: 1rem; display: block; }
-    .about-text h1 {
-      font-size: clamp(2.6rem, 4.5vw, 4rem);
-      margin-bottom: 1.8rem;
+    .about-bio .eyebrow { display: block; margin-bottom: 1rem; }
+    .about-bio h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      margin-bottom: 2rem;
       line-height: 1.05;
     }
-    .about-text p {
+    .about-bio p {
       font-size: 0.95rem;
       color: var(--text-muted);
       line-height: 1.9;
       margin-bottom: 1rem;
     }
-    .about-text .cta-row {
+    .about-bio .cta-row {
       margin-top: 2.2rem;
       display: flex;
       gap: 1rem;
+      justify-content: center;
       flex-wrap: wrap;
     }
 
-    /* ── Values Strip ──────────────────────────────────── */
+    /* ── Values Strip ────────────────────────────────────── */
     .values-strip {
       background: var(--charcoal);
       padding: 4rem 0;
@@ -63,7 +44,6 @@
     .values-inner {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
     }
     .value-item {
       padding: 2rem 3rem;
@@ -93,18 +73,13 @@
       font-weight: 400;
     }
 
-    /* ── Brands ────────────────────────────────────────── */
+    /* ── Brands ──────────────────────────────────────────── */
     .brands-section {
       padding: var(--space-lg) 0;
       background: var(--ivory);
     }
-    .brands-inner {
-      text-align: center;
-    }
-    .brands-inner .eyebrow {
-      margin-bottom: 2rem;
-      display: block;
-    }
+    .brands-inner { text-align: center; }
+    .brands-inner .eyebrow { margin-bottom: 2rem; display: block; }
     .brands-list {
       display: flex;
       flex-wrap: wrap;
@@ -127,14 +102,11 @@
     .brand-item:hover { color: var(--charcoal); }
 
     @media (max-width: 768px) {
-      .about-split { grid-template-columns: 1fr; padding: var(--space-lg) 0; }
-      .about-img { aspect-ratio: 4/3; }
-      .about-text h1 { font-size: clamp(2rem, 9vw, 3rem); }
-      .about-text .cta-row { flex-direction: column; align-items: flex-start; }
       .values-inner { grid-template-columns: 1fr; }
       .value-item { border-left: none; border-top: 1px solid rgba(245,239,230,0.07); padding: 1.6rem 1.25rem; }
       .value-item:first-child { border-top: none; }
       .brand-item { padding: 1rem 1.4rem; font-size: 0.9rem; }
+      .about-bio .cta-row { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -165,40 +137,28 @@
 
     <div style="height: var(--nav-h);"></div>
 
-    <!-- ── About Split ─────────────────────────────────────── -->
-    <section class="section-wrap">
-      <div class="about-split">
-        <div class="about-img fade-in">
-          <img
-            src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=900&q=85&auto=format&fit=crop"
-            alt="Nedz — Makeup and Hair Artist"
-            loading="lazy"
-          />
-          <span class="about-img-caption">Make Up By Nedz</span>
-        </div>
-        <div class="about-text">
-          <span class="eyebrow fade-up">The Artist</span>
-          <h1 class="display fade-up" data-delay="80">
-            Artistry<br/>rooted in<br/>individuality.
-          </h1>
-          <p class="fade-up" data-delay="160">
-            Nedz is a London-based makeup and hair artist with a passion for bringing out each client's individual beauty. With experience across bridal, editorial, and commercial work, she brings precision, warmth, and artistry to every appointment.
-          </p>
-          <p class="fade-up" data-delay="220">
-            Her approach is never one-size-fits-all. Every client is listened to, every look is considered from scratch. Whether she's preparing a bride on her wedding morning or working on set for a brand campaign, the same level of care and detail goes into every brushstroke.
-          </p>
-          <p class="fade-up" data-delay="280">
-            Based in London, Nedz is available for work across the UK and for international travel bookings.
-          </p>
-          <div class="cta-row fade-up" data-delay="340">
-            <a href="portfolio.html" class="btn btn-outline-dark">View Portfolio</a>
-            <a href="contact.html" class="btn btn-outline-gold">Book an Enquiry</a>
-          </div>
+    <!-- Bio -->
+    <section>
+      <div class="about-bio">
+        <span class="eyebrow fade-up">The Artist</span>
+        <h1 class="display fade-up" data-delay="80">Artistry rooted in individuality.</h1>
+        <p class="fade-up" data-delay="160">
+          Nedz is a London-based makeup and hair artist with a passion for bringing out each client's individual beauty. With experience across bridal, editorial, and commercial work, she brings precision, warmth, and artistry to every appointment.
+        </p>
+        <p class="fade-up" data-delay="220">
+          Her approach is never one-size-fits-all. Every client is listened to, every look is considered from scratch. Whether she's preparing a bride on her wedding morning or working on set for a brand campaign, the same level of care and detail goes into every brushstroke.
+        </p>
+        <p class="fade-up" data-delay="280">
+          Based in London, Nedz is available for work across the UK and for international travel bookings.
+        </p>
+        <div class="cta-row fade-up" data-delay="340">
+          <a href="portfolio.html" class="btn btn-outline-dark">View Portfolio</a>
+          <a href="contact.html" class="btn btn-outline-gold">Book an Enquiry</a>
         </div>
       </div>
     </section>
 
-    <!-- ── Values ─────────────────────────────────────────── -->
+    <!-- Values -->
     <section class="values-strip" aria-label="Values">
       <div class="section-wrap">
         <div class="values-inner">
@@ -221,7 +181,7 @@
       </div>
     </section>
 
-    <!-- ── Brands ─────────────────────────────────────────── -->
+    <!-- Brands -->
     <section class="brands-section">
       <div class="section-wrap">
         <div class="brands-inner">
