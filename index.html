@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Make Up By Nedz — Makeup & Hair Artist | London</title>
+  <meta name="description" content="Make Up By Nedz — London-based makeup and hair artist specialising in bridal, party, campaign, and editorial work. Available internationally." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Hero ──────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-img img {
+      height: 100%;
+      object-position: center 20%;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    .hero-img img.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(26,26,24,0.75) 0%,
+        rgba(26,26,24,0.18) 55%,
+        transparent 100%
+      );
+    }
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 0 clamp(1.5rem, 5vw, 6rem) clamp(3rem, 7vh, 6rem);
+    }
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: heroFadeUp 1s ease 0.3s forwards;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(3.2rem, 8.5vw, 8rem);
+      color: var(--white);
+      letter-spacing: 0.03em;
+      line-height: 0.95;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: heroFadeUp 1.1s ease 0.5s forwards;
+    }
+    .hero-tagline {
+      margin-top: 1.4rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(245,239,230,0.7);
+      font-weight: 400;
+      opacity: 0;
+      animation: heroFadeUp 1.1s ease 0.75s forwards;
+    }
+    .hero-location {
+      margin-top: 0.5rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,239,230,0.45);
+      font-weight: 400;
+      opacity: 0;
+      animation: heroFadeUp 1.1s ease 0.9s forwards;
+    }
+    .hero-cta {
+      margin-top: 2.2rem;
+      opacity: 0;
+      animation: heroFadeUp 1s ease 1.1s forwards;
+    }
+    @keyframes heroFadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-scroll-line {
+      position: absolute;
+      bottom: 2rem;
+      right: clamp(1.5rem, 4vw, 4rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: heroFadeUp 1s ease 1.4s forwards;
+    }
+    .hero-scroll-line span {
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,239,230,0.4);
+      writing-mode: vertical-rl;
+    }
+    .hero-scroll-line::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, rgba(245,239,230,0.3), transparent);
+    }
+
+    /* ── Featured Work ─────────────────────────────────── */
+    .featured-work {
+      background: var(--ivory);
+    }
+    .featured-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .featured-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(26,26,24,0.12);
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1.2rem;
+    }
+    .featured-grid .img-main {
+      grid-row: 1 / 3;
+      aspect-ratio: 2/3;
+      overflow: hidden;
+    }
+    .featured-grid .img-side {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .featured-grid .img-main img,
+    .featured-grid .img-side img {
+      transition: transform 0.9s ease;
+    }
+    .featured-grid .img-main:hover img,
+    .featured-grid .img-side:hover img { transform: scale(1.04); }
+    .featured-footer {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .arrow-link {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: gap var(--transition), color var(--transition);
+    }
+    .arrow-link::after {
+      content: '→';
+      font-family: inherit;
+      transition: transform var(--transition);
+    }
+    .arrow-link:hover { color: var(--gold); gap: 1.2rem; }
+
+    /* ── Services Snapshot ─────────────────────────────── */
+    .services-strip {
+      background: var(--charcoal);
+      padding: var(--space-lg) 0;
+    }
+    .services-strip .section-wrap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .service-tile {
+      padding: 2rem 2.5rem;
+      border-left: 1px solid rgba(245,239,230,0.08);
+      position: relative;
+    }
+    .service-tile:first-child { border-left: none; }
+    .service-tile h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--ivory);
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+    .service-tile hr {
+      border: none;
+      border-top: 1px solid rgba(201,169,110,0.35);
+      margin-bottom: 1rem;
+    }
+    .service-tile p {
+      font-size: 0.78rem;
+      color: rgba(245,239,230,0.45);
+      letter-spacing: 0.05em;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .service-tile-link {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ── Social CTA ────────────────────────────────────── */
+    .social-cta {
+      background: var(--ivory-mid);
+      text-align: center;
+    }
+    .social-cta h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      margin-bottom: 0.6rem;
+      color: var(--charcoal);
+    }
+    .social-cta p {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 2.2rem;
+    }
+    .social-btns {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Responsive ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .services-strip .section-wrap {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .service-tile:nth-child(3) { border-left: none; }
+    }
+    @media (max-width: 640px) {
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+      .featured-grid .img-main { grid-row: auto; aspect-ratio: 3/4; }
+      .featured-grid .img-side { display: none; }
+      .services-strip .section-wrap {
+        grid-template-columns: 1fr;
+      }
+      .service-tile { border-left: none; border-top: 1px solid rgba(245,239,230,0.08); }
+      .service-tile:first-child { border-top: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Navigation ════════════════════════════════════════ -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">Make Up By Nedz</a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav-overlay" role="dialog" aria-label="Mobile menu">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- ═══ Hero ══════════════════════════════════════════════ -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-img">
+        <img
+          src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1800&q=85&auto=format&fit=crop"
+          alt="Makeup and Hair artist — Make Up By Nedz"
+          loading="eager"
+          id="heroImg"
+        />
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">London · International</p>
+        <h1 class="hero-title display">Make Up<br>By Nedz</h1>
+        <p class="hero-tagline">Make-up &amp; Hair &nbsp;·&nbsp; Bridal &nbsp;·&nbsp; Party &nbsp;·&nbsp; Campaign</p>
+        <p class="hero-location">London &nbsp;·&nbsp; International</p>
+        <div class="hero-cta">
+          <a href="contact.html" class="btn btn-outline-white">Book an Enquiry</a>
+        </div>
+      </div>
+      <div class="hero-scroll-line" aria-hidden="true">
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ═══ Info Strip ════════════════════════════════════════ -->
+    <div class="info-strip" role="banner">
+      Message for booking enquiries
+      <span>·</span>
+      Deposit non-refundable under any condition
+    </div>
+
+    <!-- ═══ Featured Work ═════════════════════════════════════ -->
+    <section class="featured-work section-pad">
+      <div class="section-wrap">
+        <div class="featured-label fade-up">
+          <span class="eyebrow">Selected Work</span>
+        </div>
+        <div class="featured-grid">
+          <div class="img-main fade-in" data-delay="100">
+            <img
+              src="https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?w=900&q=85&auto=format&fit=crop"
+              alt="Editorial bridal makeup"
+              loading="lazy"
+            />
+          </div>
+          <div class="img-side fade-in" data-delay="200">
+            <img
+              src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=85&auto=format&fit=crop"
+              alt="Party glam makeup"
+              loading="lazy"
+            />
+          </div>
+          <div class="img-side fade-in" data-delay="320">
+            <img
+              src="https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=700&q=85&auto=format&fit=crop"
+              alt="Campaign editorial look"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="featured-footer fade-up" data-delay="200">
+          <a href="portfolio.html" class="arrow-link">View Full Portfolio</a>
+          <p class="eyebrow" style="color: var(--text-muted);">@makeupbynedz_</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Services Snapshot ════════════════════════════════ -->
+    <section class="services-strip" aria-label="Services overview">
+      <div class="section-wrap">
+        <div class="service-tile fade-up" data-delay="0">
+          <h3>Make-up &amp; Hair</h3>
+          <hr/>
+          <p>Transformative looks for every occasion, from subtle to striking.</p>
+          <a href="services.html" class="service-tile-link" aria-label="Make-up and Hair services"></a>
+        </div>
+        <div class="service-tile fade-up" data-delay="100">
+          <h3>Bridal</h3>
+          <hr/>
+          <p>Flawless, lasting looks for your most important day.</p>
+          <a href="services.html" class="service-tile-link" aria-label="Bridal services"></a>
+        </div>
+        <div class="service-tile fade-up" data-delay="200">
+          <h3>Party</h3>
+          <hr/>
+          <p>Glam for any event — solo or group bookings available.</p>
+          <a href="services.html" class="service-tile-link" aria-label="Party services"></a>
+        </div>
+        <div class="service-tile fade-up" data-delay="300">
+          <h3>Campaign</h3>
+          <hr/>
+          <p>Editorial and commercial work for film and photography.</p>
+          <a href="services.html" class="service-tile-link" aria-label="Campaign services"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Social CTA ════════════════════════════════════════ -->
+    <section class="social-cta section-pad-sm">
+      <div class="section-wrap">
+        <p class="eyebrow fade-up">Follow the work</p>
+        <h2 class="display fade-up" data-delay="100">@makeupbynedz_</h2>
+        <p class="fade-up" data-delay="150">on Instagram &amp; TikTok</p>
+        <div class="social-btns fade-up" data-delay="220">
+          <a href="https://instagram.com/makeupbynedz_" target="_blank" rel="noopener" class="btn btn-outline-dark">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline;vertical-align:middle;margin-right:0.5rem"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+          <a href="https://tiktok.com/@makeupbynedz_" target="_blank" rel="noopener" class="btn btn-outline-dark">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:inline;vertical-align:middle;margin-right:0.5rem"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg>
+            TikTok
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ Footer ════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Make Up By Nedz</div>
+      <div class="footer-center">
+        <p>London · International</p>
+        <p>Message for booking enquiries</p>
+        <p>Deposit non-refundable</p>
+      </div>
+      <div class="footer-socials">
+        <a href="https://instagram.com/makeupbynedz_" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @makeupbynedz_
+        </a>
+        <a href="https://tiktok.com/@makeupbynedz_" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg>
+          @makeupbynedz_
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Make Up By Nedz. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Hero image parallax & load animation
+    const heroImg = document.getElementById('heroImg');
+    if (heroImg) {
+      heroImg.addEventListener('load', () => heroImg.classList.add('loaded'));
+      if (heroImg.complete) heroImg.classList.add('loaded');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Make Up By Nedz</title>
+  <meta name="description" content="Bridal, party, campaign, and makeup lesson services by Make Up By Nedz — London-based makeup and hair artist. Available internationally." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { background: var(--ivory); }
+
+    /* ── Service Sections ────────────────────────────────── */
+    .service-section {
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid rgba(26,26,24,0.08);
+    }
+    .service-section:last-of-type { border-bottom: none; }
+    .service-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 6rem);
+      align-items: center;
+    }
+    .service-section.reverse .service-inner {
+      direction: rtl;
+    }
+    .service-section.reverse .service-inner > * {
+      direction: ltr;
+    }
+    .service-img {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .service-img img {
+      transition: transform 0.9s ease;
+    }
+    .service-img:hover img { transform: scale(1.04); }
+    .service-text { }
+    .service-text .number {
+      font-family: var(--serif);
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(201,169,110,0.18);
+      line-height: 1;
+      margin-bottom: -0.5rem;
+    }
+    .service-text h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 1.2rem;
+    }
+    .service-text p {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .service-text .pricing-note {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 1.4rem;
+      font-weight: 400;
+    }
+
+    /* ── Booking Callout ─────────────────────────────────── */
+    .booking-callout-wrap {
+      background: var(--ivory-mid);
+      padding: var(--space-lg) 0;
+    }
+    .booking-callout-wrap .callout-gold {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .booking-callout-wrap .callout-gold .eyebrow {
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .service-inner { grid-template-columns: 1fr; }
+      .service-section.reverse .service-inner { direction: ltr; }
+      .service-img { aspect-ratio: 3/2; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">Make Up By Nedz</a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-overlay">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- Page Header -->
+    <header class="page-header">
+      <p class="eyebrow fade-up">What's on offer</p>
+      <h1 class="display fade-up" data-delay="80">Services</h1>
+      <p class="subtitle fade-up" data-delay="160">Make-up &amp; Hair · Bridal · Party · Campaign · London &amp; International</p>
+    </header>
+
+    <!-- ── Bridal ─────────────────────────────────────────── -->
+    <section class="service-section">
+      <div class="section-wrap">
+        <div class="service-inner">
+          <div class="service-img fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?w=900&q=85&auto=format&fit=crop"
+              alt="Bridal makeup and hair"
+              loading="lazy"
+            />
+          </div>
+          <div class="service-text fade-up" data-delay="100">
+            <p class="number">01</p>
+            <p class="eyebrow" style="margin-bottom:0.8rem;">Bridal</p>
+            <h2 class="display">Bridal Hair &amp; Make-up</h2>
+            <p>
+              Your wedding day deserves artistry that lasts. Nedz creates flawless, long-wearing bridal looks tailored to your features, skin tone, and vision — from timeless elegance to contemporary glamour.
+            </p>
+            <p>
+              Trials are available and recommended. Group bookings for bridesmaids, mothers of the bride, and wedding party are welcome.
+            </p>
+            <p class="pricing-note">Pricing available on enquiry</p>
+            <div style="margin-top:1.6rem;">
+              <a href="contact.html" class="btn btn-outline-dark">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Party ──────────────────────────────────────────── -->
+    <section class="service-section reverse">
+      <div class="section-wrap">
+        <div class="service-inner">
+          <div class="service-img fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=85&auto=format&fit=crop"
+              alt="Party and events makeup"
+              loading="lazy"
+            />
+          </div>
+          <div class="service-text fade-up" data-delay="100">
+            <p class="number">02</p>
+            <p class="eyebrow" style="margin-bottom:0.8rem;">Party &amp; Events</p>
+            <h2 class="display">Party &amp; Events</h2>
+            <p>
+              Whether it's a birthday, anniversary, gala, or night out — Nedz brings the glam. Available for solo appointments and group bookings, with looks ranging from polished and natural to full editorial glamour.
+            </p>
+            <p>
+              Hair styling available alongside makeup for a complete finish.
+            </p>
+            <p class="pricing-note">Pricing available on enquiry</p>
+            <div style="margin-top:1.6rem;">
+              <a href="contact.html" class="btn btn-outline-dark">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Campaign ───────────────────────────────────────── -->
+    <section class="service-section">
+      <div class="section-wrap">
+        <div class="service-inner">
+          <div class="service-img fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=900&q=85&auto=format&fit=crop"
+              alt="Campaign and editorial makeup"
+              loading="lazy"
+            />
+          </div>
+          <div class="service-text fade-up" data-delay="100">
+            <p class="number">03</p>
+            <p class="eyebrow" style="margin-bottom:0.8rem;">Campaign &amp; Editorial</p>
+            <h2 class="display">Campaign &amp; Editorial</h2>
+            <p>
+              With experience across film sets, photography studios, and brand campaigns, Nedz delivers precise, camera-ready work that holds up under any lighting. Available for commercial shoots, lookbooks, and editorial projects.
+            </p>
+            <p>
+              Open to both UK-based and international commercial bookings. Prior collaboration credits and rates available on request.
+            </p>
+            <p class="pricing-note">Pricing available on enquiry</p>
+            <div style="margin-top:1.6rem;">
+              <a href="contact.html" class="btn btn-outline-dark">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Makeup Lessons ─────────────────────────────────── -->
+    <section class="service-section reverse">
+      <div class="section-wrap">
+        <div class="service-inner">
+          <div class="service-img fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=900&q=85&auto=format&fit=crop"
+              alt="Makeup lesson"
+              loading="lazy"
+            />
+          </div>
+          <div class="service-text fade-up" data-delay="100">
+            <p class="number">04</p>
+            <p class="eyebrow" style="margin-bottom:0.8rem;">Makeup Lessons</p>
+            <h2 class="display">One-to-One Lessons</h2>
+            <p>
+              Learn the techniques, tips, and product knowledge to recreate professional results at home. Sessions are tailored to your skill level — whether you're a complete beginner or looking to refine specific skills.
+            </p>
+            <p>
+              Lessons include product recommendations, a personalised look plan, and hands-on guidance in person.
+            </p>
+            <p class="pricing-note">Pricing available on enquiry</p>
+            <div style="margin-top:1.6rem;">
+              <a href="contact.html" class="btn btn-outline-dark">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Booking Callout ────────────────────────────────── -->
+    <section class="booking-callout-wrap">
+      <div class="section-wrap">
+        <div class="callout-gold fade-up">
+          <span class="eyebrow">Before You Book</span>
+          <p>
+            To book, please send a message via Instagram or use the
+            <a href="contact.html" style="color:var(--gold);border-bottom:1px solid rgba(201,169,110,0.4);">contact form</a>.
+            <br /><br />
+            <strong>A deposit is required to secure your date.</strong> Please note: deposits are
+            <strong>non-refundable under any condition</strong>, regardless of cancellation reason.
+            <br /><br />
+            London and international bookings are both welcome.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Make Up By Nedz</div>
+      <div class="footer-center">
+        <p>London · International</p>
+        <p>Message for booking enquiries</p>
+        <p>Deposit non-refundable</p>
+      </div>
+      <div class="footer-socials">
+        <a href="https://instagram.com/makeupbynedz_" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @makeupbynedz_
+        </a>
+        <a href="https://tiktok.com/@makeupbynedz_" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg>
+          @makeupbynedz_
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Make Up By Nedz. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
