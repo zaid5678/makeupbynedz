@@ -247,7 +247,7 @@
             <p>Enquiry Form</p>
           </div>
 
-          <form id="enquiryForm" action="https://formspree.io/f/placeholder" method="POST" novalidate>
+          <form id="enquiryForm" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="fullName">Full Name</label>
@@ -331,7 +331,6 @@
 
   <script src="js/main.js"></script>
   <script>
-    /* Form submission handler */
     const form = document.getElementById('enquiryForm');
     const success = document.getElementById('formSuccess');
 
@@ -341,11 +340,41 @@
       btn.textContent = 'Sending…';
       btn.disabled = true;
 
-      // If you set up Formspree, remove this timeout and use fetch
-      // For now, simulate success
-      await new Promise(r => setTimeout(r, 1200));
-      form.style.display = 'none';
-      success.classList.add('show');
+      const data = {
+        access_key: 'fa615d0c-ced3-4792-b9e9-67df6cff9bb1',
+        subject: 'New Booking Enquiry — Make Up By Nedz',
+        from_name: 'Make Up By Nedz Website',
+        replyto: form.querySelector('#email').value,
+        name: form.querySelector('#fullName').value,
+        email: form.querySelector('#email').value,
+        phone: form.querySelector('#phone').value,
+        occasion: form.querySelector('#occasion').value,
+        preferred_date: form.querySelector('#preferredDate').value,
+        message: form.querySelector('#message').value,
+        // Auto-reply to the person who filled the form
+        botcheck: '',
+      };
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.success) {
+          form.style.display = 'none';
+          success.classList.add('show');
+        } else {
+          btn.textContent = 'Send Enquiry';
+          btn.disabled = false;
+          alert('Something went wrong. Please try again or message via Instagram.');
+        }
+      } catch (err) {
+        btn.textContent = 'Send Enquiry';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or message via Instagram.');
+      }
     });
   </script>
 </body>
